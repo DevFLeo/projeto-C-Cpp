@@ -8,7 +8,7 @@ typedef struct {
 } Cogumelo;
 
 int main() {
-    // Lista de cogumelos já ordenada por prioridade
+    // Lista de cogumelos ordenada por prioridade
     Cogumelo cogumelos[] = {
         {"Shitake", 10},
         {"Portobello", 8},
@@ -23,7 +23,7 @@ int main() {
 
     int indiceEscolhido = -1; // Índice do cogumelo selecionado
 
-    // Encontra o índice do cogumelo escolhido na lista
+    // Encontrar o índice do cogumelo escolhido na lista
     for (int i = 0; i < 6; i++) {
         if (strcmp(cogumelos[i].nome, cogumeloEscolhido) == 0) {
             indiceEscolhido = i;
@@ -37,7 +37,7 @@ int main() {
         return 0;
     }
 
-    // Verifica sugestões abaixo do cogumelo escolhido na lista
+    // Verifica sugestões **abaixo** do cogumelo escolhido na lista
     int encontrados = 0;
     for (int i = indiceEscolhido + 1; i < 6; i++) {
         if (cogumelos[i].valor <= cogumelos[indiceEscolhido].valor) {
@@ -49,7 +49,7 @@ int main() {
 
     // Se não encontrou sugestões, exibe a mensagem padrão
     if (encontrados == 0) {
-        printf("Não há sugestões.\n");
+        printf("Desculpe, não há sugestões disponíveis.\n");
     }
 
     return 0;
