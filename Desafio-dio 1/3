@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char msg[200]; // Armazena a string original
+    char palavra[50]; // Armazena cada palavra temporariamente
+    int i = 0, j = 0;
+
+    // Lendo a mensagem completa
+    printf("Digite a mensagem: ");
+    scanf(" %[^\n]s", msg);  
+
+    // Percorrer a string original sem modificar
+    while (msg[i] != '\0') {
+        // Se for um espaço ou pontuação, imprime e reinicia palavra
+        if (isspace(msg[i]) || ispunct(msg[i])) {
+            palavra[j] = '\0'; // Finaliza a palavra
+            if (j > 0) {
+                printf("%s %s", palavra, palavra); // Duplica a palavra
+            }
+            printf("%c", msg[i]); // Imprime espaço ou pontuação
+            j = 0; // Reinicia o índice da palavra
+        } else {
+            palavra[j++] = msg[i]; // Adiciona caractere à palavra temporária
+        }
+        i++;
+    }
+
+    // Última palavra (se existir)
+    if (j > 0) {
+        palavra[j] = '\0';
+        printf("%s %s", palavra, palavra);
+    }
+
+    printf("\n");
+    return 0;
+}
