@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+
+// Definição da estrutura Cogumelo
+typedef struct {
+    char nome[20];
+    int valor;
+} Cogumelo;
+
+int main() {
+    // Lista de cogumelos já ordenada por prioridade
+    Cogumelo cogumelos[] = {
+        {"Shitake", 10},
+        {"Portobello", 8},
+        {"Shimeji", 6},
+        {"Champignon", 12},
+        {"Funghi", 16},
+        {"Porcini", 16}
+    };
+
+    char cogumeloEscolhido[20];
+    scanf(" %[^\n]", cogumeloEscolhido); // Lê a entrada do usuário
+
+    int indiceEscolhido = -1; // Índice do cogumelo selecionado
+
+    // Encontra o índice do cogumelo escolhido na lista
+    for (int i = 0; i < 6; i++) {
+        if (strcmp(cogumelos[i].nome, cogumeloEscolhido) == 0) {
+            indiceEscolhido = i;
+            break;
+        }
+    }
+
+    // Se o cogumelo não foi encontrado
+    if (indiceEscolhido == -1) {
+        printf("Cogumelo não encontrado.\n");
+        return 0;
+    }
+
+    // Verifica sugestões abaixo do cogumelo escolhido na lista
+    int encontrados = 0;
+    for (int i = indiceEscolhido + 1; i < 6; i++) {
+        if (cogumelos[i].valor <= cogumelos[indiceEscolhido].valor) {
+            printf("%s - Valor: %d\n", cogumelos[i].nome, cogumelos[i].valor);
+            encontrados++;
+            if (encontrados == 2) break; // Para após 2 sugestões
+        }
+    }
+
+    // Se não encontrou sugestões, exibe a mensagem padrão
+    if (encontrados == 0) {
+        printf("Não há sugestões.\n");
+    }
+
+    return 0;
+}
