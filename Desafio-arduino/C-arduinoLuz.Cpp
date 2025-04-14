@@ -1,3 +1,6 @@
+#include <Arduino.h>
+
+// Pino onde o LDR (sensor de luz) está conectado
 const int ldrPin = A0;      
 
 // Pino onde o LED (simulando uma lâmpada) está conectado
@@ -27,7 +30,6 @@ void loop() {
 
   Serial.print("Valor da luz ambiente (LDR): ");
   Serial.println(valorLDR); // Valor entre 0 e 1023
-  Serial.print("Valor da luz ambiente (LDR) em porcentagem: ");
 
   if (horaAtual >= 18 && valorLDR < 500) {
     digitalWrite(ledPin, HIGH);  // Liga a lâmpada (LED)
