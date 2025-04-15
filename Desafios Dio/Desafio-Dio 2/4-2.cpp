@@ -19,7 +19,7 @@ int main() {
         return 1; // Encerra o programa caso N seja inválido
     }
 
-    Livro biblioteca[N]; // Array de struct para armazenar os livros
+    Livro* biblioteca = new Livro[N]; // Array de struct para armazenar os livros dinamicamente
 
     // Leitura das informações de cada livro
     for (int i = 0; i < N; i++) {
@@ -41,5 +41,6 @@ int main() {
     printf("%s\n", biblioteca[indiceLivroMaisAntigo].autor);
     printf("%d\n", biblioteca[indiceLivroMaisAntigo].ano);
 
+    delete[] biblioteca; // Libera a memória alocada dinamicamente
     return 0;
 }
